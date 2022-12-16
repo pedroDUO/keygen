@@ -1,23 +1,40 @@
 import './style.css'
-import javascriptLogo from './javascript.svg'
-import { setupCounter } from './counter.js'
 
-document.querySelector('#app').innerHTML = `
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
-  </div>
-`
+const busca = document.getElementById('encontreMe')
+const tabela = document.getElementById('tabela')
 
-setupCounter(document.querySelector('#counter'))
+
+busca.addEventListener('keyup', (e)=>{
+  if(e.key !='Enter')
+  {
+    return
+  }
+
+    parseInput(busca.value)
+    busca.value = ""
+})
+
+function parseInput(input){
+  console.log(input)
+  const dados = ['A', 'B', 'C']
+  preecherTabela(dados)
+}
+
+function preecherTabela(dados){
+  tabela.innerHTML=`<table>`
+  tabela.innerHTML += `<tr>
+                        <th>Código</th>
+                        <th>Desenho</th>
+                        <th>Versão</th>
+                        </tr>
+                       ` 
+
+  tabela.innerHTML += `
+                      <tr>
+                      <td>DRM04S0000A</td>
+                      <td>Desenho</td>
+                      <td>Versão</td>
+                      </tr>`
+
+  tabela.innerHTML+=`</table>`
+}
